@@ -1,9 +1,9 @@
-#Dockerfile logstash
+# Dockerfile logstash
 
-#Base Docker Image
+# Base Docker Image
   - docker.elastic.co/logstash/logstash
   
-#Include
+# Include
   - [Kafka command line tool]
   - oracle jdbc
   
