@@ -5,7 +5,10 @@ COPY kafka_header.rb /usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/logstash
 COPY kt /tmp/kt
 
 USER root
-RUN chown -R logstash: /tmp/kt && chmod 775 /tmp/kt
+RUN yum install -y zip unzip \
+    && chown -R logstash: /tmp/kt && chmod 775 /tmp/kt \
+	&& rm -rf /var/cache/yum 
+RUN zip -q -d /usr/share/logstash/logstash-core/lib/jars/log4j-core-2.* org/apache/logging/log4j/core/lookup/JndiLookup.class
 
 ENV XPACK_MONITORING_ENABLED=false
 VOLUME /tmp
